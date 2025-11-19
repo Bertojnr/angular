@@ -1,0 +1,63 @@
+<div class="min-vh-100 bg-light p-4">
+
+  <!-- Page Header -->
+  <h1 class="display-4 fw-bold text-center text-primary mb-5">
+    📱 Available Devices
+  </h1>
+   
+          
+        
+
+  <!-- Phones Grid -->
+  <div class="row g-4">
+
+    @if (isLoader) {
+      <div class="col-12">
+        <div class="d-flex justify-content-center gap-3 flex-wrap py-5">
+          <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;"></div>
+        </div>
+        <p class="text-center text-muted">Loading devices...</p>
+      </div>
+    } @else {
+
+      <!-- Loop Starts Here -->
+      <div *ngFor="let phone of phonesList" class="col-12 col-sm-6 col-lg-4">
+        <div class="card shadow-sm border-primary border-opacity-25 h-100">
+
+          <div class="card-body">
+
+            <h5 class="card-title text-primary fw-bold">
+              {{ phone.name }}
+            </h5>
+
+            <p class="text-muted small">
+              <strong class="text-primary">ID:</strong> {{ phone.id }}
+            </p>
+
+            <hr />
+
+            <div *ngIf="phone.data !== null; else noData">
+              <h6 class="fw-semibold text-primary mb-2">Specifications:</h6>
+
+              <ul class="list-unstyled mb-0">
+                <li *ngFor="let key of (phone.data | keyvalue)" class="mb-1">
+                  <span class="fw-semibold text-primary">{{ key.key }}:</span>
+                  {{ key.value }}
+                </li>
+              </ul>
+            </div>
+
+            <ng-template #noData>
+              <p class="text-danger fw-semibold mt-2">No extra data available ❌</p>
+            </ng-template>
+
+          </div>
+        </div>
+      </div>
+      <!-- Loop Ends Here -->
+
+    }
+
+  </div>
+
+</div>

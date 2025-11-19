@@ -1,0 +1,25 @@
+<div class="row">
+    <div class="col-12 text-center">
+        <div class="btn-group ">
+            <button type="button" (click)="changeTab('Collection')" class="btn " [ngClass]="currentComponent == 'Collection' ? 'btn-success': 'btn-danger'">Technology</button>
+            <button type="button" (click)="changeTab('Designation')" class="btn " [ngClass]="currentComponent == 'Designation' ? 'btn-success': 'btn-danger'">Culture</button>
+            <button type="button" (click)="changeTab('Living')" class="btn " [ngClass]="currentComponent == 'Living' ? 'btn-success': 'btn-danger'">Healthy Living</button>
+            <button type="button" (click)="changeTab('NewPhones')" class="btn " [ngClass]="currentComponent == 'Living' ? 'btn-dark': 'btn-primary'">New Phones</button>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12" *ngIf="currentComponent == 'Collection'">
+        <app-rolescomponent></app-rolescomponent>
+    </div>
+     <div class="col-12" *ngIf="currentComponent == 'Designation'">
+        <app-designationcomponent></app-designationcomponent>
+    </div>
+    <div class="col-12" *ngIf="currentComponent == 'Living'">
+        <app-livingcomponent></app-livingcomponent>
+    </div>
+    <div class="col-12" *ngIf="currentComponent == 'NewPhones'">
+        <app-addrolescomponent></app-addrolescomponent>
+    </div>
+</div>

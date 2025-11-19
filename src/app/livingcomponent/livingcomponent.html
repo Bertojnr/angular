@@ -1,0 +1,52 @@
+<div class="container my-5">
+  <!-- Page Header -->
+  <h1 class="text-center mb-5 display-4 text-primary">
+    🍽️ Food Categories
+  </h1>
+
+  <!-- Categories Grid -->
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+
+    @if (isLoader) {
+      <div class="col-12">
+        <div class="d-flex justify-content-center gap-3 flex-wrap py-5">
+          <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;"></div>
+        </div>
+        <p class="text-center text-muted">Loading devices...</p>
+      </div>
+    } @else {
+        <!-- Loop through categories -->
+    <div class="col" *ngFor="let category of categories">
+      <div class="card h-100 shadow-sm border-0">
+        
+        <!-- Category Image -->
+        <img 
+          [src]="category.strCategoryThumb" 
+          [alt]="category.strCategory" 
+          class="card-img-top img-fluid rounded-top"
+        >
+
+        <div class="card-body">
+          <!-- Category Name -->
+          <h5 class="card-title text-success">{{ category.strCategory }}</h5>
+
+          <!-- Category Description -->
+          <p class="card-text text-muted">
+            {{ category.strCategoryDescription | slice:0:150 }}...
+          </p>
+        </div>
+
+        <!-- View More Button -->
+        <div class="card-footer bg-white border-0 text-center">
+          <button class="btn btn-outline-primary btn-sm">
+            View Details
+          </button>
+        </div>
+
+      </div>
+    </div>
+    }
+    
+  </div>
+</div>
+
